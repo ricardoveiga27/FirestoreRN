@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "199231676598",
+    "project_id": "projetotreinaweb-01",
+    "storage_bucket": "projetotreinaweb-01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199231676598:android:9ca8860a7b51de53fb8617",
+        "android_client_info": {
+          "package_name": "com.firestoreapp02"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199231676598-q7dkslssqor3bsblh9pfujm7s85hfgaq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtxCi9IQCxbbirdYBfjjB6X_yHKoiSYX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199231676598-q7dkslssqor3bsblh9pfujm7s85hfgaq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
