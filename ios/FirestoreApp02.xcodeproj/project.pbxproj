@@ -15,6 +15,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* FirestoreApp02Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FirestoreApp02Tests.m */; };
+		39DE21F425D1A8CB00542009 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39DE21F325D1A8CB00542009 /* GoogleService-Info.plist */; };
 		729AD15F315C8CC3FEAB3CF3 /* libPods-FirestoreApp02-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A160508C653135C9046760 /* libPods-FirestoreApp02-tvOSTests.a */; };
 		7A4E1814581091BDABE6915F /* libPods-FirestoreApp02-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 30000142618E61CC190C50EF /* libPods-FirestoreApp02-tvOS.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
@@ -58,6 +59,7 @@
 		2D02E47B1E0B4A5D006451C7 /* FirestoreApp02-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FirestoreApp02-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* FirestoreApp02-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FirestoreApp02-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30000142618E61CC190C50EF /* libPods-FirestoreApp02-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FirestoreApp02-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39DE21F325D1A8CB00542009 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "FirestoreApp02/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		406E28F238F457E2BA94F520 /* Pods-FirestoreApp02-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirestoreApp02-tvOS.release.xcconfig"; path = "Target Support Files/Pods-FirestoreApp02-tvOS/Pods-FirestoreApp02-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		61B457D5E9D897360DA750EC /* Pods-FirestoreApp02-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirestoreApp02-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-FirestoreApp02-tvOSTests/Pods-FirestoreApp02-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		62587E500A0F753F29CA682E /* Pods-FirestoreApp02-FirestoreApp02Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirestoreApp02-FirestoreApp02Tests.release.xcconfig"; path = "Target Support Files/Pods-FirestoreApp02-FirestoreApp02Tests/Pods-FirestoreApp02-FirestoreApp02Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,7 +163,6 @@
 				61B457D5E9D897360DA750EC /* Pods-FirestoreApp02-tvOSTests.debug.xcconfig */,
 				DB4A2FE40D8478E2A0B51104 /* Pods-FirestoreApp02-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -175,6 +176,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				39DE21F325D1A8CB00542009 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* FirestoreApp02 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* FirestoreApp02Tests */,
@@ -343,6 +345,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				39DE21F425D1A8CB00542009 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

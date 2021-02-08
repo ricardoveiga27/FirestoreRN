@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>199231676598-k7bfp8jnnv3hpci56fcu9bvtoig7kdl9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.199231676598-k7bfp8jnnv3hpci56fcu9bvtoig7kdl9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBi9Z4Kyd13GxdtrZ0WCa8L0-W_-h2lRIM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>199231676598</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.FirestoreApp02</string>
+	<key>PROJECT_ID</key>
+	<string>projetotreinaweb-01</string>
+	<key>STORAGE_BUCKET</key>
+	<string>projetotreinaweb-01.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:199231676598:ios:eb0a3a90160e9abcfb8617</string>
+</dict>
+</plist>
