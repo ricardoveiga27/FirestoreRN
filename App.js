@@ -1,114 +1,87 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, {Component} from 'react';
+import {StyleSheet, SafeAreaView, ScrollView, RefreshControl, Modal, Button} from 'react-native';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {ListsService} from './app/services/ListsService';
+import ListsView from './app/views/ListsView';
+import List from './app/components/List';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+export default class App extends Component {
+  state = {
+    lists: [],
+    isLoading: false,
+    modalVisible: false,
+    selectedList: {}
+  }
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
+  async componentDidMount(){
+    this.getLists();
+  }
+
+  getLists = async () => {
+    this.setState({isLoading: true});
+    const lists = await ListsService.list();
+    console.log(lists);
+    this.setState({lists, isLoading: false});
+    return lists;
+  }
+  selectList = (selectedList) => {
+    this.setState({
+      selectedList,
+      modalVisible: true
+    })
+  }
+  createList = async () => {
+    const newList = await ListsService.create({title: 'Nova Lista', description: '', picture: '', items: []}),
+      lists = await ListsService.list();
+
+    this.setState({lists}, () => {
+      this.selectList(newList);
+    })
+  }
+  updateList = async (newList) => {
+    await ListsService.update(newList);
+    const lists = await ListsService.list();
+    this.setState({
+      lists,
+      selectedList: {},
+      modalVisible: false
+    })
+  }
+  removeList = async (listToRemove) => {
+    await ListsService.remove(listToRemove.id);
+    const lists = await ListsService.list();
+    this.setState({lists});
+  }
+
+  render() {
+    const {state} = this;
+    return (
+      <SafeAreaView style={styles.container}>
+        <Button title="+ Nova Lista" onPress={this.createList} style={{flex: 1}} color="green" />
+        <ScrollView refreshControl={<RefreshControl
+                                        refreshing={state.isLoading}
+                                        onRefresh={this.getLists}
+                                        />}>
+          <ListsView lists={state.lists} onRemove={this.removeList} onSelect={this.selectList} />
         </ScrollView>
+     
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={state.modalVisible}
+        >
+          <List list={state.selectedList} onActionDone={this.updateList} />
+        </Modal>
       </SafeAreaView>
-    </>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  }
 });
-
-export default App;
