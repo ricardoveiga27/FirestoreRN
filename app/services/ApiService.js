@@ -10,6 +10,7 @@ export class DataStore{
     formatList(querySnapshot){
         return querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id}));
     }
+
     async list(){
         const querySnapshot = await this.collection.get();
         return this.formatList(querySnapshot);
@@ -17,18 +18,23 @@ export class DataStore{
 
     
   async create(item){
-      const doc = await this.store.create(item);
-      await this.push();
-      return doc;
+        const newItem = await this.collection.add({body: item});
+        const doc = await newItem.get();
+        const newDoc = {...doc.data(), id: doc.id};
+        return newDoc;
   }
+
+
   async update(doc){
-      const newDoc = await this.store.update(doc.id, doc.rev, doc.body);
-      await this.push();
-      return newDoc;
+        const {id} = doc;
+        delete doc.id;
+
+        await this.collection.doc(id).update(doc);
+        return {id, ...doc};
   }
+  
   async remove(id){
-      await this.store.delete(id);
-      await this.push();
-      return id;
+        await this.collection.doc(id).delete();
+        return id;
   }
 }
