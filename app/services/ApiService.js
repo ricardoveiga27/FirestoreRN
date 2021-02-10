@@ -16,6 +16,12 @@ export class DataStore{
         return this.formatList(querySnapshot);
     }
 
+    watch(callback) {
+        return this.collection.onSnapshot((querySnapshot) => {
+            callback(this.formatList(querySnapshot));
+        })
+    }
+
     
   async create(item){
         const newItem = await this.collection.add({body: item});
