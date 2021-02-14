@@ -44,6 +44,13 @@ class Login extends Component{
         }
     }
 
+    resetPassword = () => {
+      const {email} = this.state;
+      if(email){
+          firebase.auth().sendPasswordResetEmail(email);
+      }
+    }
+
     singInEmail = async () => {
       const {email, password} = this.state;
       if (password.length >= 6) {
@@ -66,7 +73,7 @@ class Login extends Component{
 
             <View style={styles.view} >
 
-                <View>
+              <View>
                     <Button title={isNewUser ? 'Fazer Login' : 'Novo Cadastro'} onPress={() => this.setState({isNewUser: !isNewUser})} />
                 </View>
 
@@ -75,8 +82,13 @@ class Login extends Component{
                     <TextInput style={styles.loginInput} placeholder="Senha" secureTextEntry={true} onChangeText={password => this.setState({password})} />
                     {
                       !isNewUser ?
-                      <Button title="Login" onPress={this.login} /> :
-                      <Button title="Cadastrar" onPress={this.singInEmail} />
+
+                      <View>
+                        <Button title="Login" onPress={this.login}/>
+                        <Button title="Resetar Senha" onPress={this.resetPassword}/>
+                      </View>
+                       :
+                      <Button title="Cdastrar" onPress={this.singInEmail} />
                     }
                     
                     <Text style={styles.loginError} >{errorMessage}</Text>
